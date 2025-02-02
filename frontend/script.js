@@ -36,7 +36,7 @@ async function fetchSummary() {
             'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
         }
 
-        const response = await fetch('http://127.0.0.1:8000/get_summary/', {
+        const response = await fetch('https://intellinotes.onrender.com/get_summary/', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({ url: url })
