@@ -41,8 +41,9 @@ async function fetchSummary() {
             </iframe>
         `;
 
-        // display summary
+        // display summary and download button
         document.getElementById("summaryOutput").innerHTML = marked.parse(data.summary  || "No summary available.");
+        document.querySelector('.download_summary_btn').style.display = 'inline-block';
 
         localStorage.setItem("video_title", data.video_title);
         localStorage.setItem("summary", data.summary);
@@ -53,63 +54,41 @@ async function fetchSummary() {
     }
 }
 
-// download as txt file
-// function downloadSummary() {
-//     const video_title = localStorage.getItem("video_title");
-//     const summary = localStorage.getItem("summary");
-//     if (!summary) {
-//         alert("No summary available to download.");
-//         return;
-//     }
-    
-//     const blob = new Blob([summary], { type: "text/plain" });
-//     const link = document.createElement("a");
-//     link.href = URL.createObjectURL(blob);
-//     link.download = video_title + " intellinotes.txt";
-//     link.click();
-// }
-
-// download as pdf
-// TODO formatting
 function downloadSummary() {
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF();
-
     const video_title = localStorage.getItem("video_title") || "Untitled Video";
     const summary = localStorage.getItem("summary");
-   
+
     if (!summary) {
         alert("No summary available to download.");
         return;
     }
-    
-    // Set title
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(16);
-    pdf.text(video_title, 10, 10);
 
-    // Set summary text
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(12);
-    let margin = 20;
-    let lineHeight = 7;
-    let maxWidth = 180; // Max width for text wrapping
-    let yPosition = margin;
+    // create a container for the content to be downloaded as PDF
+    const content = document.createElement('div');
+    content.style.fontFamily = 'Open Sans, sans-serif';  // TODO open sans, use the same font as the page
 
-    // Split text into lines for better formatting
-    let lines = pdf.splitTextToSize(summary, maxWidth);
-    lines.forEach(line => {
-        if (yPosition > 280) { // If the text reaches the bottom, create a new page
-            pdf.addPage();
-            yPosition = margin;
-        }
-        pdf.text(line, 10, yPosition);
-        yPosition += lineHeight;
-    });
+    // create the title and summary HTML structure
+    const title = document.createElement('h1');
+    title.textContent = video_title;
+    content.appendChild(title);
 
-    // Save as PDF
-    pdf.save(`${video_title}_intellinotes.pdf`);
+    const summaryText = document.createElement('p');
+    summaryText.innerHTML = marked.parse(summary);  // use innerHTML to preserve any HTML in the summary
+    content.appendChild(summaryText);
+
+    // set up options for html2pdf
+    const options = {
+        margin:       10,
+        filename:     `${video_title}_intellinotes.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { dpi: 192, letterRendering: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // use html2pdf.js to convert the content to a PDF and download it
+    html2pdf().from(content).set(options).save();
 }
+
 
 function goBack() {
     window.location.href = "index.html";

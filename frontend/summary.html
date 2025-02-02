@@ -7,19 +7,26 @@
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- <div class="container"> -->
-        <button onclick="goBack()">🔙 Back</button>
+    <button onclick="goBack()" class="back_button">⬅ Back</button>
+    <div class="summary_container">
         <h1 id="videoTitle">Loading...</h1>
-        <div id="videoPlayer"></div>
-        <button onclick="downloadSummary()">Download Summary</button>
-        <div id="summaryOutput">Generating summary... ⏳</div>
-    <!-- </div> -->
+        <div id="videoPlayer" class="videoPlayer"></div>
+        <button onclick="downloadSummary()" class="download_summary_btn">Download Summary</button>
+        <div class="summary_output_container">
+            <div id="summaryOutput">Please wait, generating summary... ⏳</div>
+        </div>
+    </div>
 
     <script>
-        // Automatically call fetchSummary when summary.html loads
+        // call fetchSummary when summary.html loads
         document.addEventListener('DOMContentLoaded', fetchSummary);
     </script>
 </body>

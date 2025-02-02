@@ -5,15 +5,27 @@
     <title>IntelliNotes</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>IntelliNotes</h1>
-    <p>
-        IntelliNotes is an AI-powered media summarization system designed to help you quickly extract key takeaways from videos. Simply input the link, and IntelliNotes, powered by GPT-4o, will generate a summary of the most important points and key takeaways.
-    </p>
-    <input type="text" id="urlToSummarize" placeholder="Enter YouTube link">
-    <button  onclick="redirectToSummary()" type="button">Generate Notes</button>
+    <a href="https://github.com/shaima-h/intellinotes/tree/main" target="_blank" class="github-link">
+        <img src="assets/github-logo.svg" alt="GitHub" class="github-icon">
+    </a>
+    <div class="main_container">
+        <h1>IntelliNotes</h1>
+        <p>
+            IntelliNotes is an AI-powered media summarization system designed to help you quickly extract key takeaways from videos.
+        </p>
+        <p>
+            Simply input the link, and IntelliNotes will generate a summary of the most important points and key takeaways.
+        </p>
+        <input type="text" id="urlToSummarize" placeholder="Enter YouTube link">
+        <button  onclick="redirectToSummary()" type="button">Generate notes</button>
+    </div>
 </body>
 
 </html>

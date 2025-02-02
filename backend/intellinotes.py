@@ -38,14 +38,13 @@ def get_video_title(url: str):
     """gets video title from youtube url"""
 
     r = requests.get(url)
-    soup = BeautifulSoup(r.text)
+    soup = BeautifulSoup(r.text, features="html.parser")
 
     link = soup.find_all(name="title")[0]
     title = str(link)
     title = title.replace("<title>","")
     title = title.replace("</title>","")
 
-    print(title)
     return title
 
 
