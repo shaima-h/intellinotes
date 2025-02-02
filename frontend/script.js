@@ -15,6 +15,19 @@ async function fetchSummary() {
         return;
     }
 
+    // show progress bar
+    document.getElementById("progressContainer").style.display = "block";
+    let progress = 0;
+    const progressBar = document.getElementById("progressBar");
+
+    const simulateProgress = setInterval(() => {
+        progress += 5;
+        progressBar.style.width = `${progress}%`;
+        if (progress >= 100) {
+            clearInterval(simulateProgress);
+        }
+    }, 500);
+
     try {
         const headers = {
             'Accept': 'application/json',
@@ -41,9 +54,13 @@ async function fetchSummary() {
             </iframe>
         `;
 
-        // display summary and download button
+        // display summary
         document.getElementById("summaryOutput").innerHTML = marked.parse(data.summary  || "No summary available.");
-        document.querySelector('.download_summary_btn').style.display = 'inline-block';
+        
+        document.querySelector('.summary_output_container').style.textAlign = 'left';
+        document.querySelector('.download_summary_btn').style.display = 'block';
+        document.querySelector('.instructions_and_button').style.display = 'flex';
+        document.querySelector('.edit_instructions').style.display = 'block';
 
         localStorage.setItem("video_title", data.video_title);
         localStorage.setItem("summary", data.summary);
@@ -51,12 +68,22 @@ async function fetchSummary() {
     } catch (error) {
         document.getElementById("summaryOutput").innerHTML = "Error generating summary. Please try again.";
         console.error(error);
+    } finally {
+        // hide the progress bar when done
+        document.getElementById("progressContainer").style.display = "none";
     }
 }
 
+// to allow the user to edit the summary directly in the contenteditable div
+document.getElementById("summaryOutput").addEventListener("input", function() {
+    const updatedSummary = document.getElementById("summaryOutput").innerHTML;
+    localStorage.setItem("summary", updatedSummary); // update the edited summary in localStorage
+});
+
 function downloadSummary() {
     const video_title = localStorage.getItem("video_title") || "Untitled Video";
-    const summary = localStorage.getItem("summary");
+    // const summary = localStorage.getItem("summary");
+    const summary = document.getElementById("summaryOutput").innerHTML;
 
     if (!summary) {
         alert("No summary available to download.");

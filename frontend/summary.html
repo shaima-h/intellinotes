@@ -17,12 +17,23 @@
 <body>
     <button onclick="goBack()" class="back_button">⬅ Back</button>
     <div class="summary_container">
+
         <h1 id="videoTitle">Loading...</h1>
         <div id="videoPlayer" class="videoPlayer"></div>
-        <button onclick="downloadSummary()" class="download_summary_btn">Download Summary</button>
-        <div class="summary_output_container">
-            <div id="summaryOutput">Please wait, generating summary... ⏳</div>
+
+        <div id="progressContainer" class="progress-container" style="display: none;">
+            <div id="progressBar" class="progress-bar"></div>
         </div>
+
+        <div class="instructions_and_button">
+            <p class="edit_instructions">Click on the notes below to edit them!</p>
+            <button onclick="downloadSummary()" class="download_summary_btn">⬇ Download Notes</button>
+        </div>
+
+        <div class="summary_output_container">
+            <div id="summaryOutput" contenteditable="true">Please wait, generating summary... ⏳</div>
+        </div>
+
     </div>
 
     <script>
