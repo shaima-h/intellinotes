@@ -65,7 +65,7 @@ async function fetchSummary() {
 //     const blob = new Blob([summary], { type: "text/plain" });
 //     const link = document.createElement("a");
 //     link.href = URL.createObjectURL(blob);
-//     link.download = video_title + " podnotes_summary.txt";
+//     link.download = video_title + " intellinotes.txt";
 //     link.click();
 // }
 
@@ -108,7 +108,7 @@ function downloadSummary() {
     });
 
     // Save as PDF
-    pdf.save(`${video_title}_podnotes_summary.pdf`);
+    pdf.save(`${video_title}_intellinotes.pdf`);
 }
 
 function goBack() {
