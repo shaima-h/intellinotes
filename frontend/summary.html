@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PodNotes</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- <div class="container"> -->
+        <button onclick="goBack()">🔙 Back</button>
+        <h1 id="videoTitle">Loading...</h1>
+        <div id="videoPlayer"></div>
+        <button onclick="downloadSummary()">Download Summary</button>
+        <div id="summaryOutput">Generating summary... ⏳</div>
+    <!-- </div> -->
+
+    <script>
+        // Automatically call fetchSummary when summary.html loads
+        document.addEventListener('DOMContentLoaded', fetchSummary);
+    </script>
+</body>
+
+</html>
