@@ -32,8 +32,8 @@ async function fetchSummary() {
         const headers = {
             'Accept': 'application/json',
             'Content-Type':'application/json',
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+            // 'Access-Control-Allow-Origin':'*',
+            // 'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
         }
 
         const response = await fetch('https://intellinotes.onrender.com/get_summary/', {

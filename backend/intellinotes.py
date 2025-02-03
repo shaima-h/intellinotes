@@ -10,21 +10,21 @@ from bs4 import BeautifulSoup
 
 app = FastAPI()
 
-origins = [
-    "http://127.0.0.1:5500/",
-    "http://127.0.0.1:8000",
-    "http://localhost",
-    "http://localhost:8000",
-    "http://localhost:8080",
-]
+# origins = [
+#     "http://127.0.0.1:5500/",
+#     "http://127.0.0.1:8000",
+#     "http://localhost",
+#     "http://localhost:8000",
+#     "http://localhost:8080",
+# ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=['*'],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=['*'],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 client = OpenAI(
     api_key = os.environ.get("OPENAI_API_KEY"),
@@ -86,6 +86,8 @@ def summarize_text(text: str):
 @app.post('/get_summary/')
 async def get_summary(request: SummarizeRequest):
     # """API endpoint: accepts youtube url, fetches transcript, and summarizes."""
+
+    print(request)
     video_title = get_video_title(request.url)
     video_id = extract_youtube_video_id(request.url)
     if not video_id:
