@@ -102,10 +102,6 @@ async def get_summary(request: SummarizeRequest):
     return {"video_title": video_title, "video_id": video_id, "summary": summary}
 
 
-@app.get("/test_network/")
-async def test_network():
-    try:
-        response = requests.get("https://www.youtube.com")
-        return {"status": "success", "response_code": response.status_code}
-    except Exception as e:
-        return {"status": "failed", "error": str(e)}
+@app.get("/")
+async def root():
+    return {"message": "FastAPI is running on Render!"}
