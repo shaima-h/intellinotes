@@ -47,7 +47,6 @@ def get_video_title(url: str):
 
     return title
 
-
 def extract_youtube_video_id(url: str):
     """extracts video ID from youtube url"""
 
@@ -57,10 +56,11 @@ def extract_youtube_video_id(url: str):
 def get_transcript(video_id: str):
     """fetches transcript from youtube api"""
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        # transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        transcript = YouTubeTranscriptApi.get_transcript(video_id, proxies={"https": "http://localhost:8080"})
         return " ".join([t['text'] for t in transcript])
-    except Exception:
-        raise HTTPException(status_code=400, detail="Transcript not available for this video.")
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Transcript not available for this video. Error: {str(e)}")
     
 def summarize_text(text: str):
     """uses openai api to generate summary and key takeaways"""
@@ -76,7 +76,6 @@ def summarize_text(text: str):
         model="gpt-4o",
     )
 
-    # return response["choices"][0]["message"]["content"]
     print(response)
     return response.choices[0].message.content
 
