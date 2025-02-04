@@ -55,9 +55,14 @@ def extract_youtube_video_id(url: str):
 
 def get_transcript(video_id: str):
     """fetches transcript from youtube api"""
+
+    proxy_username = os.environ.get("PROXY_USERNAME")
+    proxy_password = os.environ.get("PROXY_PASSWORD")
+    proxy_url = f"http://{proxy_username}:{proxy_password}@gate.smartproxy.com:10001"
+
     try:
         # transcript = YouTubeTranscriptApi.get_transcript(video_id)
-        transcript = YouTubeTranscriptApi.get_transcript(video_id, proxies={"https": "http://127.0.0.1:8000"})
+        transcript = YouTubeTranscriptApi.get_transcript(video_id, proxies={"http": proxy_url, 'https': proxy_url})
         return " ".join([t['text'] for t in transcript])
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Transcript not available for this video. Error: {str(e)}")
