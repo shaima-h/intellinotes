@@ -57,7 +57,7 @@ def get_transcript(video_id: str):
     """fetches transcript from youtube api"""
     try:
         # transcript = YouTubeTranscriptApi.get_transcript(video_id)
-        transcript = YouTubeTranscriptApi.get_transcript(video_id, proxies={"https": "http://localhost:8080"})
+        transcript = YouTubeTranscriptApi.get_transcript(video_id, proxies={"https": "http://127.0.0.1:8000"})
         return " ".join([t['text'] for t in transcript])
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Transcript not available for this video. Error: {str(e)}")
