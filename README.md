@@ -1,5 +1,7 @@
 # IntelliNotes
 
+[Visit IntelliNotes](https://intellinotes-ai.netlify.app)
+
 IntelliNotes is an AI-powered media notes generation system designed to help you quickly extract key takeaways from videos. Simply input the link, and IntelliNotes, powered by GPT-4o, will generate notes, consisting of a summary, key takeaways, and action items.
 
 ## Motivation
