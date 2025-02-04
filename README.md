@@ -1,6 +1,6 @@
 # IntelliNotes
 
-IntelliNotes is an AI-powered media summarization system designed to help you quickly extract key takeaways from videos. Simply input the link, and IntelliNotes, powered by GPT-4o, will generate a summary of the most important points and key takeaways.
+IntelliNotes is an AI-powered media notes generation system designed to help you quickly extract key takeaways from videos. Simply input the link, and IntelliNotes, powered by GPT-4o, will generate notes, consisting of a summary, key takeaways, and action items.
 
 ## Motivation
 
@@ -10,7 +10,7 @@ With IntelliNotes, you can:
 
 - Save time by skipping lengthy note-taking sessions.
 - Retain knowledge with AI-generated summaries and action points.
-- Stay organized by keeping all your key takeaways in one place.
+- Edit and save the notes for future reference.
 
 ### Currently supports:
 - YouTube video links
