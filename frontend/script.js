@@ -26,7 +26,7 @@ async function fetchSummary() {
         if (progress >= 100) {
             clearInterval(simulateProgress);
         }
-    }, 500);
+    }, 650);
 
     try {
         const headers = {
