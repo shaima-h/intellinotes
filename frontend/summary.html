@@ -12,13 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <button onclick="goBack()" class="back_button">⬅ Back</button>
+    <button onclick="goBack()" class="back_button">← Back</button>
     <div class="summary_container">
 
-        <h1 id="videoTitle">Loading...</h1>
+        <h1 id="videoTitle">Please wait, generating notes... ⏳</h1>
         <div id="videoPlayer" class="videoPlayer"></div>
 
         <div id="progressContainer" class="progress-container" style="display: none;">
@@ -27,11 +28,11 @@
 
         <div class="instructions_and_button">
             <p class="edit_instructions">Click on the notes below to edit them!</p>
-            <button onclick="downloadSummary()" class="download_summary_btn">⬇ Download Notes</button>
+            <button onclick="downloadSummary()" class="download_summary_btn">↓ Download Notes</button>
         </div>
 
         <div class="summary_output_container">
-            <div id="summaryOutput" contenteditable="true">Please wait, generating notes... ⏳</div>
+            <div id="summaryOutput" contenteditable="true"></div>
         </div>
 
     </div>

@@ -50,6 +50,7 @@ body {
     width: 70%;
     margin: auto;
     margin-top: 125px;
+    max-width: 1000px;
     color: var(--color2);
 }
 
@@ -211,10 +212,25 @@ body {
     text-align: center;
 }
 
-
 @media screen and (max-width: 830px) {
+    .main_container {
+        margin-top: 80px;
+    }
+
+    .main_container h1 {
+        font-size: 45px;
+    }
+
     .main_container p {
-        font-size: 18px;
+        font-size: 14px;
+    }
+
+    .main_container input {
+        font-size: 14px;
+    }
+
+    .main_container button {
+        font-size: 16px;
     }
 
     .github-icon {
@@ -249,10 +265,15 @@ body {
 
     .videoPlayer iframe {
         width: 100%;
-        height: 56.25vw;
-        min-height: 315px;
-        max-height: 90vh;
+        /* height: 56.25vw; */
+        height: auto;
+        /* min-height: 315px;
+        max-height: 90vh; */
         border: none;
+    }
+
+    .instructions_and_button {
+        gap: 20px;
     }
 
     .edit_instructions {

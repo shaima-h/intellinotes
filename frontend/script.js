@@ -23,10 +23,10 @@ async function fetchSummary() {
     const simulateProgress = setInterval(() => {
         progress += 5;
         progressBar.style.width = `${progress}%`;
-        if (progress >= 100) {
+        if (progress >= 95) {
             clearInterval(simulateProgress);
         }
-    }, 650);
+    }, 1000);
 
     try {
         const headers = {
