@@ -30,6 +30,11 @@ client = OpenAI(
     api_key = os.environ.get("OPENAI_API_KEY"),
 )
 
+proxy_username = os.environ.get("PROXY_USERNAME")
+proxy_password = os.environ.get("PROXY_PASSWORD")
+proxy_url = f"http://{proxy_username}:{proxy_password}@gate.smartproxy.com:10001"
+
+
 # input model
 class SummarizeRequest(BaseModel):
     url: str
@@ -37,7 +42,7 @@ class SummarizeRequest(BaseModel):
 def get_video_title(url: str):
     """gets video title from youtube url"""
 
-    r = requests.get(url)
+    r = requests.get(url, proxies={"http": proxy_url, 'https': proxy_url})
     soup = BeautifulSoup(r.text, features="html.parser")
 
     link = soup.find_all(name="title")[0]
@@ -55,11 +60,6 @@ def extract_youtube_video_id(url: str):
 
 def get_transcript(video_id: str):
     """fetches transcript from youtube api"""
-
-    proxy_username = os.environ.get("PROXY_USERNAME")
-    proxy_password = os.environ.get("PROXY_PASSWORD")
-    proxy_url = f"http://{proxy_username}:{proxy_password}@gate.smartproxy.com:10001"
-
     try:
         # transcript = YouTubeTranscriptApi.get_transcript(video_id)
         transcript = YouTubeTranscriptApi.get_transcript(video_id, proxies={"http": proxy_url, 'https': proxy_url})
@@ -69,7 +69,7 @@ def get_transcript(video_id: str):
     
 def summarize_text(text: str):
     """uses openai api to generate summary and key takeaways"""
-    prompt = f"Summarize this and generate key points and action items:\n{text}"
+    prompt = f"Summarize this and generate key points and action items as if you are taking notes:\n{text}"
     
     response = client.chat.completions.create(
         messages=[
@@ -91,6 +91,7 @@ async def get_summary(request: SummarizeRequest):
     # """API endpoint: accepts youtube url, fetches transcript, and summarizes."""
 
     print(request)
+    
     video_title = get_video_title(request.url)
     print(video_title)
 
