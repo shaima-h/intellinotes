@@ -8,15 +8,18 @@
     --color5: #b2b2b2;
 }
 
-/* html, body {
+body {
+    font-family: var(--font-open-sans);
+}
+
+.page_container {
     height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-} */
-
-body {
-    font-family: var(--font-open-sans);
 }
 
 .github-link {
@@ -42,12 +45,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* padding: 100px; */
     z-index: 1;
     text-align: center;
     width: 70%;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 125px;
     color: var(--color2);
 }
 
@@ -96,7 +98,7 @@ body {
     border: none;
     background-color: var(--color1);
     color: white;
-    margin-bottom: 200px;
+    /* margin-bottom: 200px; */
 }
 
 .main_container button:hover {
