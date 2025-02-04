@@ -69,7 +69,7 @@ def get_transcript(video_id: str):
     
 def summarize_text(text: str):
     """uses openai api to generate summary and key takeaways"""
-    prompt = f"Generate notes for the following by providing:\n 1. A concise summary of the main ideas.\n 2. Key takeaways in bullet points.\n 3. Action steps (if applicable).\n Here is the transcript: \n{text}"
+    prompt = f"Generate notes for the video by providing:\n 1. A concise summary of the main ideas.\n 2. Key takeaways in bullet points.\n 3. Action steps (if applicable).\n Here is the video: \n{text}"
     
     response = client.chat.completions.create(
         messages=[
