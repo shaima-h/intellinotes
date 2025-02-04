@@ -14,6 +14,10 @@ With IntelliNotes, you can:
 - Retain knowledge with AI-generated summaries and action points.
 - Edit and save the notes for future reference.
 
+Example for [Stop Wasting Time - How to Change your Life in 90 Days by Ali Abdaal
+](https://www.youtube.com/watch?v=U7JNdMbj1zM)
+![screencapture-intellinotes-ai-netlify-app-summary-html-2025-02-03-22_59_46](https://github.com/user-attachments/assets/66f6866d-4a5d-4753-990f-fbc2455e344e)
+
 ### Currently supports:
 - YouTube video links
 
