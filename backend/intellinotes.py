@@ -32,7 +32,7 @@ client = OpenAI(
 
 proxy_username = os.environ.get("PROXY_USERNAME")
 proxy_password = os.environ.get("PROXY_PASSWORD")
-proxy_url = f"http://{proxy_username}:{proxy_password}@gate.smartproxy.com:10001"
+proxy_url = f"http://{proxy_username}:{proxy_password}@gate.smartproxy.com:10002"
 
 
 # input model
