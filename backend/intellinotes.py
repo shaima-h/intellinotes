@@ -71,20 +71,21 @@ def summarize_text(text: str):
     """uses openai api to generate summary and key takeaways"""
     # Markdown
     prompt = f"""Generate notes for the video by providing:
-                1. A concise summary of the main ideas.
-                2. Key takeaways in a list.
-                3. Action steps in a list (if applicable).
+    1. A concise summary of the main ideas in paragraph format.
+    2. Key takeaways in a list.
+    3. Action steps in a list (if applicable).
 
-                Instructions:
-                Do not include any introductory or closing sentences.
+    Instructions:
+    - Do not include any introductory or closing sentences.
+    - Use headers for each section: "Summary," "Key Takeaways," and "Action Items."
+    - For the lists:
+        - Do not use any bullets or dashes. Only use numbering (1, 2, 3, etc.) to order items if necessary.
+        - Put each item on a separate line.
 
-                For the lists:
-                - Do not use any bullets or dashes. Only use numbering (1, 2, 3, etc.) to order items if necessary.
-                - Put each item on a separate line.
+    Here is the video:
+    {text}
+    """
 
-                Here is the video:
-                {text}
-                """
     # BBCode
     # prompt = f"Generate notes for the video by providing:\n1. A concise summary of the main ideas.\n2. Key takeaways in bullet points.\n3. Action steps (if applicable).\nGenerate your response in BBCode.\nOnly output the BBCode-formatted content. Do not include any introductory or closing sentences.\nHere is the video:\n{text}"
     
