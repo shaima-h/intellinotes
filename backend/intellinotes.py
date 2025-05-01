@@ -69,7 +69,11 @@ def get_transcript(video_id: str):
     
 def summarize_text(text: str):
     """uses openai api to generate summary and key takeaways"""
-    prompt = f"Generate notes for the video by providing:\n1. A concise summary of the main ideas.\n2. Key takeaways in bullet points.\n3. Action steps (if applicable).\nGenerate your response in BBCode.\nOnly output the BBCode-formatted content. Do not include any introductory or closing sentences.\nHere is the video:\n{text}"
+    # Markdown
+    prompt = f"Generate notes for the video by providing:\n 1. A concise summary of the main ideas.\n 2. Key takeaways in bullet points.\n 3. Action steps (if applicable).\n Here is the video: \n{text}"
+
+    # BBCode
+    # prompt = f"Generate notes for the video by providing:\n1. A concise summary of the main ideas.\n2. Key takeaways in bullet points.\n3. Action steps (if applicable).\nGenerate your response in BBCode.\nOnly output the BBCode-formatted content. Do not include any introductory or closing sentences.\nHere is the video:\n{text}"
     
     response = client.chat.completions.create(
         messages=[
